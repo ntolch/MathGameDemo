@@ -20,11 +20,10 @@ import java.util.Collections;
 import java.util.Random;
 
 /*
-* TO DO:
+* TODO:
 *  Create levels of difficulty
 *  Track high score based on score and percentage being higher
 *    or create levels
-*  Add game options (multiplication, division, etc)
 * */
 
 public class MainActivity extends AppCompatActivity {
@@ -123,13 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // TODO: Allow for multiple Checkboxes/game types to be selected
-    // If gameType contains addition, generate addition question
-    // If gameType contains other, generate that question
-    // Generate one question at a time.
-    // TODO: Choose operator at random from array of integars that contains the selected operators
-
-
     // operators = 1, 2, 3, 4  -- each int equating to an operator
     // questionType = random int in operators array
     // ex: if questionType == 1, generateAdditionQuestion
@@ -148,15 +140,12 @@ public class MainActivity extends AppCompatActivity {
         } if (gameType.contains("division")) {
             selectedOperators.add(DIVIDE);
         }
-        Log.i("SELECTED OPERATORS*****", selectedOperators.toString());
     }
 
     public void generateQuestionAndAnswer() {
 
         Random random = new Random();
         int questionType = selectedOperators.get(random.nextInt(selectedOperators.size()));
-
-        Log.i("**RANDO QUESTION TYPE", String.valueOf(questionType));
 
         if (questionType == 0) {
             generateAdditionQuestion();
@@ -182,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         Random random = new Random();
         int number1 = random.nextInt(100);
         int number2 = random.nextInt(100);
-        questionTextView.setText(Integer.toString(number1) + " + " + Integer.toString(number2) + " = ");
+        questionTextView.setText(number1 + " + " + number2 + " = ");
 
         correctAnswer = number1 + number2;
 
@@ -205,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         int number1 = random.nextInt(100 - 50) + 50;
         int number2 = random.nextInt(50 - 1) + 1;
 
-        questionTextView.setText(Integer.toString(number1) + " - " + Integer.toString(number2) + " = ");
+        questionTextView.setText(number1 + " - " + number2 + " = ");
 
         correctAnswer = number1 - number2;
 
@@ -228,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         int number1 = random.nextInt(30) + 1;
         int number2 = random.nextInt(10) + 1;
 
-        questionTextView.setText(Integer.toString(number1) + " x " + Integer.toString(number2) + " = ");
+        questionTextView.setText(number1 + " x " + number2 + " = ");
 
         correctAnswer = number1 * number2;
 
@@ -251,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         int number1 = random.nextInt(100 + 1) * 2;
         int number2 = random.nextInt(2) + 1 ;
 
-        questionTextView.setText(Integer.toString(number1) + " ÷ " + Integer.toString(number2) + " = ");
+        questionTextView.setText(number1 + " ÷ " + number2 + " = ");
 
         correctAnswer = number1 / number2;
 
@@ -274,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
         answers.clear();
         questionsAsked = 0;
         score = 0;
-        scoreTextView.setText(String.valueOf(score) + "/" + String.valueOf(questionsAsked));
+        scoreTextView.setText(score + "/" + questionsAsked);
 
         startButton.setVisibility(View.VISIBLE);
 
@@ -316,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         questionsAsked = questionsAsked + 1;
-        scoreTextView.setText(String.valueOf(score) + "/" + String.valueOf(questionsAsked));
+        scoreTextView.setText(score + "/" + questionsAsked);
 
         answers.clear();
         generateQuestionAndAnswer();
@@ -344,23 +333,23 @@ public class MainActivity extends AppCompatActivity {
 
         getSelectedOperators();
 
-        startButton = (Button) findViewById(R.id.startButton);
+        startButton = findViewById(R.id.startButton);
 
-        timerTextView = (TextView) findViewById(R.id.timerTextView);
-        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
-        questionTextView = (TextView) findViewById(R.id.questionTextView);
-        gridLayout = (android.support.v7.widget.GridLayout) findViewById(R.id.gridLayout);
+        timerTextView = findViewById(R.id.timerTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
+        questionTextView = findViewById(R.id.questionTextView);
+        gridLayout = findViewById(R.id.gridLayout);
 
-        textView8 = (TextView) findViewById(R.id.textView8);
-        finalScoreTextView = (TextView) findViewById(R.id.finalScoreTextView);
-        resetButton = (Button) findViewById(R.id.resetButton);
+        textView8 = findViewById(R.id.textView8);
+        finalScoreTextView = findViewById(R.id.finalScoreTextView);
+        resetButton = findViewById(R.id.resetButton);
 
-        option0 = (Button) findViewById(R.id.option0);
-        option1 = (Button) findViewById(R.id.option1);
-        option2 = (Button) findViewById(R.id.option2);
-        option3 = (Button) findViewById(R.id.option3);
+        option0 = findViewById(R.id.option0);
+        option1 = findViewById(R.id.option1);
+        option2 = findViewById(R.id.option2);
+        option3 = findViewById(R.id.option3);
 
-        highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
+        highScoreTextView = findViewById(R.id.highScoreTextView);
 
     }
 }
